@@ -1,0 +1,21 @@
+{
+  "app_language": "Dastur tili",
+
+  "login": "Kirish",
+  "registation": "Ro'yxatdan o'tish",
+  "confirm_phone_number": "Confirm phone number",
+  "passwod": "Parol",
+  "set_passwod": "Parol o'rnatish",
+  "phone_number": "Telefon raqamingiz",
+  "forget_password": "Parolni unutdim",
+  "otp_sms":"ga sms orqali yuborilgan kodni kiriting",
+  "otp_retry":"dan so'ng qayta sms yuborish mumkin",
+  "you_confirm_our_rules":"Davom etish bilan bizning shartlarga rozi bo'lasiz",
+  "btn": {
+    "continue":"Davom etish",
+    "registation": "Ro'yxatdan o'tish"
+  },
+  "enter_your_phone": "Telefon raqamingizni kiriting",
+  "enter_your_password": "Parolingizni kiriting",
+  "success_message": "Muvaffaqiyatli tasdiqlandi"
+}
