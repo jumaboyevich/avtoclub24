@@ -9,7 +9,10 @@ class SuccessScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(LocaleKeys.success_message.tr(), style: Theme.of(context).textTheme.displayMedium,),
+        child: Text(
+          LocaleKeys.success_message.tr(),
+          style: Theme.of(context).textTheme.displayMedium,
+        ),
       ),
     );
   }

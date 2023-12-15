@@ -97,15 +97,17 @@ class _OtpScreenState extends State<OtpScreen> {
                     text: TextSpan(
                         style: Theme.of(context).textTheme.headlineLarge,
                         children: <TextSpan>[
-                          TextSpan(text: '00:${timer.toString().padLeft(2,'0')} ', style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                            color: violet
-                          )),
+                          TextSpan(
+                              text: '00:${timer.toString().padLeft(2, '0')} ',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .copyWith(color: violet)),
                           TextSpan(
                             text: LocaleKeys.otp_retry.tr(),
                           ),
                         ]),
                   ),
-               
                 ],
               ),
             ),
@@ -116,7 +118,8 @@ class _OtpScreenState extends State<OtpScreen> {
               textColor: 1 == 1 ? white : greyGreen,
               text: LocaleKeys.btn_continue.tr(),
               onTap: () {
-                Navigator.of(context).push(fade(page: const NewPasswordScreen()));
+                Navigator.of(context)
+                    .push(fade(page: const NewPasswordScreen()));
               },
             )
           ],

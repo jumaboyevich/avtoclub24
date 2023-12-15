@@ -18,8 +18,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    
-    final isFirstTime = StorageRepository.getBool(StoreKeys.isFirstTime, defValue: true);
+
+    final isFirstTime =
+        StorageRepository.getBool(StoreKeys.isFirstTime, defValue: true);
     Timer(const Duration(seconds: 1), () {
       if (mounted) {
         Navigator.of(context).pushReplacement(fade(
@@ -31,23 +32,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          // Align(
-          //     alignment: Alignment.bottomCenter,
-          //     child: SvgPicture.asset(
-          //       AppIcons.line,
-          //       width: MediaQuery.sizeOf(context).width,
-          //       fit: BoxFit.fitWidth,
-          //     )),
           Align(alignment: Alignment.center, child: Text("AvtoClub24")),
-          // Positioned(
-          //     bottom: 24,
-          //     right: 0,
-          //     left: 0,
-          //     child: Lottie.asset('assets/lotties/loading.json', height: 44, repeat: true, animate: true))
         ],
       ),
     );

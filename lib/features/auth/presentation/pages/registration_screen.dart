@@ -23,7 +23,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   @override
   void initState() {
-    phoneController = TextEditingController(text: Formatters.phoneFormatter().getMaskedText());
+    phoneController = TextEditingController(
+        text: Formatters.phoneFormatter().getMaskedText());
     super.initState();
   }
 
@@ -31,8 +32,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const WAppBar(
-        backgroundColor: white,
-        hasUnderline: false,
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 24, bottom: 24, right: 24),

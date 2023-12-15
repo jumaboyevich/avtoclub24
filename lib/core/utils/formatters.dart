@@ -5,9 +5,8 @@ class Formatters {
   //     mask: '##-###-##-##', filter: {'#': RegExp(r'[\+0-9]')}, type: MaskAutoCompletionType.lazy);
 
   static MaskTextInputFormatter phoneFormatter() => MaskTextInputFormatter(
-        mask:  '+### (##) ###-##-##',
-        filter: {'#': RegExp(r'[\+0-9]')},
-        type: MaskAutoCompletionType.lazy,
-     initialText: '998'
-      );
+      mask: '+### (##) ###-##-##',
+      filter: {'#': RegExp(r'[\+0-9]')},
+      type: MaskAutoCompletionType.lazy,
+      initialText: '998');
 }
