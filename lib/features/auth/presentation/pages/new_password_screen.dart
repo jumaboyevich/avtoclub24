@@ -27,8 +27,8 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
   void initState() {
     passrordController = TextEditingController();
     confirmPassrordController = TextEditingController();
-    _passwordVisible=false;
-    _confirmPasswordVisible=false;
+    _passwordVisible = false;
+    _confirmPasswordVisible = false;
     _formKey = GlobalKey<FormState>();
     super.initState();
   }
@@ -36,8 +36,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const WAppBar(
-      ),
+      appBar: const WAppBar(),
       body: Padding(
         padding: const EdgeInsets.only(left: 24, bottom: 24, right: 24),
         child: Form(
@@ -58,7 +57,8 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                       height: 24,
                     ),
                     DefaultTextField(
-                      contentPadding: const EdgeInsets.symmetric(vertical: 22, horizontal: 15),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 22, horizontal: 15),
                       expands: !_passwordVisible,
                       errorText: "",
                       controller: passrordController,
@@ -67,41 +67,49 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                       maxLines: 1,
                       minLines: null,
                       hintText: LocaleKeys.put_new_passwod.tr(),
-                         suffix: IconButton(
-                       
-                          onPressed: () { 
-                            setState(() {
-                              _passwordVisible=!_passwordVisible;
-                            });
-                           },
-                          icon: _passwordVisible ? SvgPicture.asset(AppIcons.eye, color: greyBlue,):const Icon(Icons.visibility_off_outlined, color: greyBlue,),
-                        ),
+                      suffix: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _passwordVisible = !_passwordVisible;
+                          });
+                        },
+                        icon: _passwordVisible
+                            ? SvgPicture.asset(
+                                AppIcons.eye,
+                                color: greyBlue,
+                              )
+                            : const Icon(
+                                Icons.visibility_off_outlined,
+                                color: greyBlue,
+                              ),
+                      ),
                     ),
                     const SizedBox(
                       height: 24,
                     ),
-                        DefaultTextField(
-                          contentPadding: const EdgeInsets.symmetric(vertical: 22, horizontal: 15),
-                       expands: !_confirmPasswordVisible,
-                       maxLines: 1,
-                       minLines: null,
+                    DefaultTextField(
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 22, horizontal: 15),
+                      expands: !_confirmPasswordVisible,
+                      maxLines: 1,
+                      minLines: null,
                       errorText: "",
                       controller: confirmPassrordController,
                       onChanged: (s) {},
                       isObscure: _confirmPasswordVisible,
-                      
                       hintText: LocaleKeys.confirm_new_passwod.tr(),
-                         suffix: IconButton(
-                       
-                          onPressed: () { 
-                            setState(() {
-                              _confirmPasswordVisible=!_confirmPasswordVisible;
-                            });
-                           },
-                          icon: _confirmPasswordVisible ? SvgPicture.asset(AppIcons.eye):const Icon(Icons.visibility_off_outlined),
-                        ),
+                      suffix: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _confirmPasswordVisible = !_confirmPasswordVisible;
+                          });
+                        },
+                        icon: _confirmPasswordVisible
+                            ? SvgPicture.asset(AppIcons.eye)
+                            : const Icon(Icons.visibility_off_outlined),
+                      ),
                     ),
-                      const SizedBox(
+                    const SizedBox(
                       height: 24,
                     ),
                     Text(
@@ -117,17 +125,22 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                 color: violet,
                 textColor: 1 == 1 ? white : greyGreen,
                 text: LocaleKeys.btn_continue.tr(),
-                onTap: () async{
-                    if(passrordController.text.isEmpty && confirmPassrordController.text.isEmpty){
-                             await alertSnackbar(context, 'Maydonlarga qiymat kiritilmadi', 'Ogohlantirish!', MessageStatus.Warning);
-                    }else
-                    if(confirmPassrordController.text.contains(passrordController.text)){
-                       Navigator.of(context).push(fade(page: const SuccessScreen()));
-                    }else{
-                          await alertSnackbar(context, 'Mos emas', 'Xatolik!', MessageStatus.Error);
-                    }
-                  
-                 
+                onTap: () async {
+                  if (passrordController.text.isEmpty &&
+                      confirmPassrordController.text.isEmpty) {
+                    await alertSnackbar(
+                        context,
+                        'Maydonlarga qiymat kiritilmadi',
+                        'Ogohlantirish!',
+                        MessageStatus.Warning);
+                  } else if (confirmPassrordController.text
+                      .contains(passrordController.text)) {
+                    Navigator.of(context)
+                        .push(fade(page: const SuccessScreen()));
+                  } else {
+                    await alertSnackbar(
+                        context, 'Mos emas', 'Xatolik!', MessageStatus.Error);
+                  }
                 },
               )
             ],
@@ -136,5 +149,4 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
       ),
     );
   }
- 
 }

@@ -3,11 +3,9 @@ import 'package:avtoclub24/assets/constants/icons.dart';
 import 'package:avtoclub24/core/utils/formatters.dart';
 import 'package:avtoclub24/features/auth/presentation/pages/registration_screen.dart';
 import 'package:avtoclub24/features/common/presentation/navigator.dart';
-import 'package:avtoclub24/features/common/presentation/w_android_dialog.dart';
 import 'package:avtoclub24/features/common/presentation/widgets/alert_snackbar.dart';
 import 'package:avtoclub24/features/common/presentation/widgets/default_text_field.dart';
 import 'package:avtoclub24/features/common/presentation/widgets/o_button.dart';
-import 'package:avtoclub24/features/common/presentation/widgets/w_appbar.dart';
 import 'package:avtoclub24/features/common/presentation/widgets/w_button.dart';
 import 'package:avtoclub24/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -25,18 +23,20 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   late TextEditingController phoneController;
   late TextEditingController passwordController;
+  late bool _passwordVisible;
 
   @override
   void initState() {
-    phoneController = TextEditingController(text: Formatters.phoneFormatter('998').getMaskedText());
+    phoneController = TextEditingController(
+        text: Formatters.phoneFormatter().getMaskedText());
     passwordController = TextEditingController();
+    _passwordVisible = false;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -63,7 +63,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       errorText: "",
                       keyboardType: TextInputType.phone,
                       controller: phoneController,
-                      inputFormatters: [Formatters.phoneFormatter(null)],
+                      inputFormatters: [Formatters.phoneFormatter()],
                       onChanged: (s) {},
                       hintText: LocaleKeys.enter_your_phone.tr(),
                     ),
@@ -71,29 +71,50 @@ class _SignInScreenState extends State<SignInScreen> {
                       height: 16,
                     ),
                     DefaultTextField(
-                      expands: true,
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 22, horizontal: 15),
+                      expands: !_passwordVisible,
+                      maxLines: 1,
+                      minLines: null,
+                      isObscure: _passwordVisible,
                       errorText: "",
                       controller: passwordController,
                       onChanged: (s) {},
                       hintText: LocaleKeys.enter_your_password.tr(),
-                      suffix: Padding(
-                        padding: const EdgeInsets.only(right: 16.0),
-                        child: SvgPicture.asset(AppIcons.eye),
+                      suffix: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _passwordVisible = !_passwordVisible;
+                          });
+                        },
+                        icon: _passwordVisible
+                            ? SvgPicture.asset(
+                                AppIcons.eye,
+                                color: greyBlue,
+                              )
+                            : const Icon(
+                                Icons.visibility_off_outlined,
+                                color: greyBlue,
+                              ),
                       ),
                     ),
                     const SizedBox(
                       height: 16,
                     ),
                     TextButton(
-                        onPressed: ()async {
-                               await  alertSnackbar(context, LocaleKeys.forget_password.tr(), LocaleKeys.forget_password.tr(), MessageStatus.Success);
-           
+                        onPressed: () async {
+                          await alertSnackbar(
+                              context,
+                              LocaleKeys.forget_password.tr(),
+                              LocaleKeys.forget_password.tr(),
+                              MessageStatus.Success);
                         },
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
                             LocaleKeys.forget_password.tr(),
-                            style: const TextStyle(color: violet), textAlign: TextAlign.start,
+                            style: const TextStyle(color: violet),
+                            textAlign: TextAlign.start,
                           ),
                         )),
                   ],
@@ -112,9 +133,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     text: LocaleKeys.btn_registation.tr(),
                     onTap: () {},
                   ),
-                      const SizedBox(
-                      height: 16,
-                    ),
+                  const SizedBox(
+                    height: 16,
+                  ),
                   WButton(
                     isDisabled: false,
                     disabledColor: grey,
@@ -126,27 +147,36 @@ class _SignInScreenState extends State<SignInScreen> {
                           .push(fade(page: const RegistrationScreen()));
                     },
                   ),
-                   const SizedBox(
-                      height: 16,
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      style: Theme.of(context).textTheme.headlineSmall,
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: LocaleKeys.you_confirm_our_rules_start.tr()),
+                        TextSpan(
+                            text: LocaleKeys.you_confirm_our_rules_keyword.tr(),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall!
+                                .copyWith(color: violet),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () async {
+                                await alertSnackbar(
+                                    context,
+                                    LocaleKeys.you_confirm_our_rules_keyword
+                                        .tr(),
+                                    LocaleKeys.you_confirm_our_rules_keyword
+                                        .tr(),
+                                    MessageStatus.Success);
+                              }),
+                        TextSpan(
+                            text: LocaleKeys.you_confirm_our_rules_end.tr()),
+                      ],
                     ),
-                    RichText(
-      text: TextSpan(
-        style: Theme.of(context).textTheme.headlineSmall,
-        children: <TextSpan>[
-          TextSpan(text: LocaleKeys.you_confirm_our_rules_start.tr()),
-          TextSpan(
-              text:LocaleKeys.you_confirm_our_rules_keyword.tr(),
-            style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: violet),
-              recognizer: TapGestureRecognizer()
-                ..onTap = ()async {
-                 await  alertSnackbar(context, LocaleKeys.you_confirm_our_rules_keyword.tr(), LocaleKeys.you_confirm_our_rules_keyword.tr(), MessageStatus.Success);
-           
-                }),
-          TextSpan(text: LocaleKeys.you_confirm_our_rules_end.tr()),
-        
-        ],
-      ),
-    )
+                  )
                 ],
               )
             ],

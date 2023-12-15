@@ -3,14 +3,19 @@
 
   "login": "Kirish",
   "registation": "Ro'yxatdan o'tish",
-  "confirm_phone_number": "Confirm phone number",
+  "confirm_phone_number": "Telefon raqamni tasdiqlash",
   "passwod": "Parol",
   "set_passwod": "Parol o'rnatish",
+  "put_new_passwod": "Parolni o'rnatish",
+  "confirm_new_passwod": "Parolni qayta yozing",
   "phone_number": "Telefon raqamingiz",
   "forget_password": "Parolni unutdim",
   "otp_sms":"ga sms orqali yuborilgan kodni kiriting",
   "otp_retry":"dan so'ng qayta sms yuborish mumkin",
-  "you_confirm_our_rules":"Davom etish bilan bizning shartlarga rozi bo'lasiz",
+  "you_confirm_our_rules_start":"Davom etish bilan ",
+  "you_confirm_our_rules_keyword":"bizning shartlar",
+  "you_confirm_our_rules_end":"ga rozi bo'lasiz",
+  "you_confirm_our_rules2":"... dan ro’yxatdan o’tishingiz bilan bizning shartlarga rozi bo’lasiz",
   "btn": {
     "continue":"Davom etish",
     "registation": "Ro'yxatdan o'tish"

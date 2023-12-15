@@ -4,10 +4,10 @@ class Formatters {
   // static MaskTextInputFormatter phoneFormatter = MaskTextInputFormatter(
   //     mask: '##-###-##-##', filter: {'#': RegExp(r'[\+0-9]')}, type: MaskAutoCompletionType.lazy);
 
-  static MaskTextInputFormatter phoneFormatter(String? initialText) => MaskTextInputFormatter(
+  static MaskTextInputFormatter phoneFormatter() => MaskTextInputFormatter(
         mask:  '+### (##) ###-##-##',
         filter: {'#': RegExp(r'[\+0-9]')},
         type: MaskAutoCompletionType.lazy,
-     initialText: initialText
+     initialText: '998'
       );
 }

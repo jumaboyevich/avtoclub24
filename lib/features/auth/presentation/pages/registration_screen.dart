@@ -23,7 +23,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   @override
   void initState() {
-    phoneController = TextEditingController(text: Formatters.phoneFormatter('998').getMaskedText());
+    phoneController = TextEditingController(text: Formatters.phoneFormatter().getMaskedText());
     super.initState();
   }
 
@@ -57,7 +57,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     keyboardType: TextInputType.phone,
                     title: LocaleKeys.phone_number.tr(),
                     controller: phoneController,
-                    inputFormatters: [Formatters.phoneFormatter(null)],
+                    inputFormatters: [Formatters.phoneFormatter()],
                     onChanged: (s) {},
                     hintText: LocaleKeys.enter_your_phone.tr(),
                   ),
