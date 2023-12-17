@@ -1,7 +1,7 @@
 import 'package:avtoclub24/assets/themes/theme.dart';
 import 'package:avtoclub24/core/storage/storage.dart';
 import 'package:avtoclub24/core/storage/store_keys.dart';
-import 'package:avtoclub24/features/authentification/presentation/splash_screen.dart';
+import 'package:avtoclub24/features/splash_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
